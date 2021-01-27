@@ -1,0 +1,311 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* header  */
+.header-top {
+  height: 5rem;
+  padding: 1rem;
+  align-items: center;
+}
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 3rem;
+}
+.navbar-container ul {
+  margin: 0;
+  padding: 0;
+}
+.welcome p {
+  margin: 0;
+}
+.border-bottom {
+  border-bottom: 1px solid #454545;
+  padding-bottom: 5px;
+}
+/* dorpdown menu  */
+.header-list {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.header-list li {
+  display: inline-block;
+}
+
+/* search  */
+.search {
+  position: relative;
+  width: 340px;
+  height: 100%;
+}
+#searchInput {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  line-height: 30px;
+  padding: 0 55px 0 20px;
+  width: 100%;
+  height: 100%;
+}
+#searchInput:focus,
+.search-btn:focus {
+  outline: none;
+}
+.search-btn {
+  background-color: transparent;
+  border-color: #ddd;
+  border-image: none;
+  border-radius: 0 5px 5px 0;
+  border-style: none none none solid;
+  border-width: medium medium medium 1px;
+  color: #454545;
+  cursor: pointer;
+  font-size: 12px;
+  height: 100%;
+  padding: 0 14px;
+  position: absolute;
+  right: 0;
+  top: 2px;
+  transition: all 0.3s ease 0s;
+}
+.search-item,
+.search-form {
+  height: 100%;
+}
+/* hide search input  */
+.hide {
+  opacity: 0;
+}
+/* header-bottom-right */
+.header-bottom {
+  height: 6.5rem;
+}
+.header-bottom-right {
+  width: 100%;
+}
+.header-bottom-right,
+.navbar-container ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-container nav ul li {
+  display: inline-block;
+}
+.navbar-container nav a:hover {
+  color: #ff3d2a;
+}
+.navbar-container nav a {
+  text-decoration: none;
+  color: #454545;
+}
+.header-cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.cart-icon img {
+  font-size: 2rem;
+  width: 100%;
+}
+.cart-icon {
+  width: 2.5rem;
+  position: relative;
+}
+.count-style {
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: red;
+  top: 15%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+}
+/* logo  */
+.log h1 {
+  font-family: "Times New Roman", Times, serif;
+}
+.custom-caption {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 15%;
+  top: 15rem;
+  right: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  text-align: center;
+}
+.first-slide {
+  position: relative;
+}
+.test {
+  position: absolute;
+  /* z-index: 2; */
+}
+.new-arrivals {
+  text-align: left;
+  width: 55%;
+  height: 30%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.arrivals-span {
+  font-size: 2.5rem;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  color: #ff3d2a;
+}
+.new-arrivals-txt h1 {
+  font-size: 4rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.offer-txt {
+  font-weight: bold;
+  color: rgb(48, 48, 48);
+}
+.shop-btn {
+  width: 10rem;
+  background-color: #ff3d2a;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 40px;
+  margin-top: 2rem;
+  text-transform: uppercase;
+}
+/* flowers section  */
+.flower-section {
+  padding: 2rem;
+}
+.flower-img-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.shop-now-container {
+  position: absolute;
+}
+.shop-now-container {
+  text-align: center;
+}
+.shop-now-link {
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.shop-now-link:hover {
+  color: #ff3d2a;
+}
+.flower-img-container {
+  transition: 0.5s ease-in-out;
+}
+.flower-img {
+  width: 100%;
+  height: 8.5rem;
+  background-size: cover !important;
+  background-position: center !important;
+  transition: ease-in-out;
+}
+/* .flower-img:hover {
+  transform: scale(1.1);
+} */
+.camellias-flowers {
+  background: url("//cdn.shopify.com/s/files/1/0021/5570/8489/files/banner-1.png?v=1533619449");
+}
+.bergamot-flowers {
+  background: url("//cdn.shopify.com/s/files/1/0021/5570/8489/files/banner-2.png?v=1533619462");
+}
+.bottlebrush-flowers {
+  background: url("//cdn.shopify.com/s/files/1/0021/5570/8489/files/banner-3.png?v=1533619491");
+}
+
+/* carousel flower section  */
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider__wrapper {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.slider__item {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.slider__control {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  color: #fff;
+  text-align: center;
+  opacity: 0.5;
+  height: 50px;
+  transform: translateY(-25%);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.slider__control:hover,
+.slider__control:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 0.9;
+}
+
+.slider__control_left {
+  left: 0;
+}
+
+.slider__control_right {
+  right: 0;
+}
+
+.slider__control::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: transparent no-repeat center center;
+  background-size: 100% 100%;
+}
+
+.slider__control_left::before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.slider__control_right::before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+.slider__item > div {
+  line-height: 250px;
+  font-size: 100px;
+  text-align: center;
+}
