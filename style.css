@@ -37,6 +37,45 @@
   z-index: 1030;
   background: white;
 }
+/* modal styles  */
+.total-price-container {
+  justify-content: center;
+}
+.flower-modal-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+}
+.flower-modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.close-modal {
+  margin: 0 !important;
+}
+.up-down {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.up-down p {
+  margin: 0;
+}
+.cart-modal-price,
+.cart-modal-header,
+.cart-modal-amount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-backdrop {
+  z-index: -1;
+}
+
 /* dorpdown menu  */
 .header-list {
   height: 100%;
@@ -128,6 +167,7 @@
 .cart-icon {
   width: 2.5rem;
   position: relative;
+  cursor: pointer;
 }
 .count-style {
   width: 15px;
@@ -326,7 +366,6 @@
 .bag-icon {
   font-size: 1.5rem;
   color: #454545;
-  /* position: absolute; */
   width: 66%;
   padding: 0.5rem;
   bottom: 0;

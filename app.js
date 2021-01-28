@@ -21,7 +21,12 @@ $(document).ready(() => {
       // $('nav div').removeClass('visible-title');
     }
   });
-
+  //cart
+  let cart = [];
+  let buttonsDom = [];
+  let cartTotal = document.querySelector(".cart__total");
+  let cartItem = document.querySelector(".bigcounter");
+  let CartContent = document.querySelector("#cartContent");
   // get all products
   class Products {
     async getProducts() {
@@ -35,6 +40,21 @@ $(document).ready(() => {
       }
     }
   }
+  // local storarge
+  class Storage {
+    static saveProducts(products) {
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+    static getProduct(id) {
+      let products = JSON.parse(localStorage.getItem("products"));
+      console.log(products);
+      return products.find(product => product.sys.id === id);
+    }
+    static saveCart(cart) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }
+
   //display the products
   class UI {
     displayProduts(products) {
@@ -50,7 +70,7 @@ $(document).ready(() => {
           <span class="price">
             $${product.fields.price}
           </span>
-          <i class="fas fa-shopping-bag bag-icon"></i>
+          <i class="fas fa-shopping-bag bag-icon"  data-id="${product.sys.id}"></i> 
         </div>
       </div>`;
         $(".carouselbox1").html(results);
@@ -60,16 +80,91 @@ $(document).ready(() => {
       }
       showMoviesData1();
     }
+    getBagBtn() {
+      const btns = [...document.querySelectorAll(".bag-icon")];
+      buttonsDom = btns;
+      btns.forEach(button => {
+        let id = button.dataset.id;
+        let inCart = cart.find(item => item.id === id);
+        if (inCart) {
+          button.innerText = "in Cart";
+          button.disabled = true;
+        } else {
+          button.addEventListener("click", e => {
+            e.target.innerText = "In Cart";
+            e.target.disabled = true;
+            //get propduct from products
+            let cartItem = { ...Storage.getProduct(id), amount: 1 };
+            console.log(cartItem);
+            //add product to the cart
+            cart = [...cart, cartItem];
+            console.log(cart);
+            //save cart in local storage
+            Storage.saveCart(cart);
+            //set set cart values
+            this.seCartValues(cart);
+            //display cart item
+            this.addCartItem(cartItem);
+            //show the cart
+          });
+        }
+      });
+    }
+    seCartValues(cart) {
+      let temTotal = 0;
+      let itemsTotal = 0;
+      cart.map(item => {
+        console.log(item);
+        temTotal += item.fields.price * item.amount;
+        itemsTotal += item.amount;
+      });
+      cartTotal.innerText = parseFloat(temTotal.toFixed(2));
+      cartItem.innerText = itemsTotal;
+      console.log(cartTotal, cartItem);
+    }
+    addCartItem(item) {
+      const div = document.createElement("div");
+      div.classList.add("container-fluid");
+      div.innerHTML = `
+      <div class="row">
+      <div class="col-6">
+        <img src="${item.fields.image.url}" class="img-fluid" alt="${item.fields.title}">
+      </div>
+      <div class="col-6 flower-modal-desc">
+      <div class="cart-modal-header">
+        <h5>${item.fields.title}</h5>
+        <span class="remove-item" data-id="${item.sys.id}">X</span>
+      </div>
+        <div class="cart-modal-price">
+          <h5>price:</h5><span>$${item.fields.price}</span>          
+        </div>
+        <div class="cart-modal-amount">
+          <h5>amount</h5>
+          <div class="up-down">
+            <i class="fas fa-chevron-up" data-id=${item.sys.id}></i>
+            <p class ="item-amount" >${item.amount}</p>
+            <i class="fas fa-chevron-down" data-id=${item.sys.id}></i>
+          </div>
+        </div>
+      </div>
+    </div>
+      `;
+      CartContent.appendChild(div);
+    }
   }
-  // local storarge
-  class Storage {}
 
   const ui = new UI();
   const products = new Products();
   // get all products
-  products.getProducts().then(product => {
-    ui.displayProduts(product);
-  });
+  products
+    .getProducts()
+    .then(product => {
+      ui.displayProduts(product);
+      Storage.saveProducts(product);
+    })
+    .then(() => {
+      ui.getBagBtn();
+    });
 
   // Slider
   $(".switchLeft").click(sliderScrollLeft1);
