@@ -10,118 +10,99 @@ $(document).ready(() => {
       $(".search-item").addClass("hide");
     }
   });
-  let multiItemSlider = (function () {
-    return function (selector, config) {
-      let _mainElement = document.querySelector(selector), // основный элемент блока
-        _sliderWrapper = _mainElement.querySelector(".slider__wrapper"), // обертка для .slider-item
-        _sliderItems = _mainElement.querySelectorAll(".slider__item"), // элементы (.slider-item)
-        _sliderControls = _mainElement.querySelectorAll(".slider__control"), // элементы управления
-        _sliderControlLeft = _mainElement.querySelector(
-          ".slider__control_left"
-        ), // кнопка "LEFT"
-        _sliderControlRight = _mainElement.querySelector(
-          ".slider__control_right"
-        ), // кнопка "RIGHT"
-        _wrapperWidth = parseFloat(getComputedStyle(_sliderWrapper).width), // ширина обёртки
-        _itemWidth = parseFloat(getComputedStyle(_sliderItems[0]).width), // ширина одного элемента
-        _positionLeftItem = 0, // позиция левого активного элемента
-        _transform = 0, // значение транфсофрмации .slider_wrapper
-        _step = (_itemWidth / _wrapperWidth) * 100, // величина шага (для трансформации)
-        _items = []; // массив элементов
 
-      // наполнение массива _items
-      _sliderItems.forEach(function (item, index) {
-        _items.push({ item: item, position: index, transform: 0 });
+  // sticky header
+  $(window).scroll(function () {
+    if ($(window).scrollTop() >= 180) {
+      $(".stick").addClass("stickey-header");
+      // $('nav div').addClass('visible-title');
+    } else {
+      $(".stick").removeClass("stickey-header");
+      // $('nav div').removeClass('visible-title');
+    }
+  });
+
+  // get all products
+  class Products {
+    async getProducts() {
+      try {
+        let results = await fetch("products.json");
+        let jsonData = await results.json();
+        let products = jsonData.items;
+        return products;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+  //display the products
+  class UI {
+    displayProduts(products) {
+      console.log(products);
+      let results = "";
+      products.forEach(product => {
+        results += `<div class="slider_container">
+        <img class="img-1 slider-img" src="${product.fields.image.url}" />
+        <div class="carousel-img-des">
+          <a class="details">
+            ${product.fields.title}
+          </a>
+          <span class="price">
+            $${product.fields.price}
+          </span>
+          <i class="fas fa-shopping-bag bag-icon"></i>
+        </div>
+      </div>`;
+        $(".carouselbox1").html(results);
       });
+      function showMoviesData1() {
+        scrollPerClick1 = document.querySelector(".img-1").clientWidth + 20;
+      }
+      showMoviesData1();
+    }
+  }
+  // local storarge
+  class Storage {}
 
-      let position = {
-        getItemMin: function () {
-          let indexItem = 0;
-          _items.forEach(function (item, index) {
-            if (item.position < _items[indexItem].position) {
-              indexItem = index;
-            }
-          });
-          return indexItem;
-        },
-        getItemMax: function () {
-          let indexItem = 0;
-          _items.forEach(function (item, index) {
-            if (item.position > _items[indexItem].position) {
-              indexItem = index;
-            }
-          });
-          return indexItem;
-        },
-        getMin: function () {
-          return _items[position.getItemMin()].position;
-        },
-        getMax: function () {
-          return _items[position.getItemMax()].position;
-        },
-      };
+  const ui = new UI();
+  const products = new Products();
+  // get all products
+  products.getProducts().then(product => {
+    ui.displayProduts(product);
+  });
 
-      let _transformItem = function (direction) {
-        let nextItem;
-        if (direction === "right") {
-          _positionLeftItem++;
-          if (
-            _positionLeftItem + _wrapperWidth / _itemWidth - 1 >
-            position.getMax()
-          ) {
-            nextItem = position.getItemMin();
-            _items[nextItem].position = position.getMax() + 1;
-            _items[nextItem].transform += _items.length * 100;
-            _items[nextItem].item.style.transform =
-              "translateX(" + _items[nextItem].transform + "%)";
-          }
-          _transform -= _step;
-        }
-        if (direction === "left") {
-          _positionLeftItem--;
-          if (_positionLeftItem < position.getMin()) {
-            nextItem = position.getItemMax();
-            _items[nextItem].position = position.getMin() - 1;
-            _items[nextItem].transform -= _items.length * 100;
-            _items[nextItem].item.style.transform =
-              "translateX(" + _items[nextItem].transform + "%)";
-          }
-          _transform += _step;
-        }
-        _sliderWrapper.style.transform = "translateX(" + _transform + "%)";
-      };
+  // Slider
+  $(".switchLeft").click(sliderScrollLeft1);
+  $(".switchRight").click(sliderScrollRight1);
+  const sliders1 = document.querySelector(".carouselbox1");
+  var scrollPerClick1;
+  var ImagePadding = 20;
 
-      // обработчик события click для кнопок "назад" и "вперед"
-      let _controlClick = function (e) {
-        let direction = this.classList.contains("slider__control_right")
-          ? "right"
-          : "left";
-        e.preventDefault();
-        _transformItem(direction);
-      };
+  // Scroll Functionality
+  var scrollAmount1 = 0;
 
-      let _setUpListeners = function () {
-        // добавление к кнопкам "назад" и "вперед" обрботчика _controlClick для событя click
-        _sliderControls.forEach(function (item) {
-          item.addEventListener("click", _controlClick);
-        });
-      };
+  function sliderScrollLeft1() {
+    sliders1.scrollTo({
+      top: 0,
+      left: (scrollAmount1 -= scrollPerClick1),
+      behavior: "smooth",
+    });
 
-      // инициализация
-      _setUpListeners();
+    if (scrollAmount1 < 0) {
+      scrollAmount1 = 0;
+    }
 
-      return {
-        right: function () {
-          // метод right
-          _transformItem("right");
-        },
-        left: function () {
-          // метод left
-          _transformItem("left");
-        },
-      };
-    };
-  })();
+    console.log("Scroll Amount: ", scrollAmount1);
+  }
 
-  let slider = multiItemSlider(".slider");
+  function sliderScrollRight1() {
+    if (scrollAmount1 <= sliders1.scrollWidth - sliders1.clientWidth) {
+      sliders1.scrollTo({
+        top: 0,
+        left: (scrollAmount1 += scrollPerClick1),
+        behavior: "smooth",
+      });
+    }
+    console.log("Scroll Amount: ", scrollAmount1);
+  }
 });

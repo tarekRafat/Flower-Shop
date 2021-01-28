@@ -1,0 +1,66 @@
+.carousell {
+  margin: auto;
+  width: 80%;
+  position: relative;
+  box-sizing: border-box;
+}
+.carousell .switchLeft,
+.carousell .switchRight {
+  color: red;
+  font-weight: bold;
+  line-height: 250px;
+  font-size: 40px;
+  text-align: center;
+  background-color: transparent;
+  font-family: sans-serif;
+  top: 1em;
+  z-index: 3;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.switchLeft span,
+.switchRight span {
+  font-size: 20px;
+}
+
+.carousell .switchLeft {
+  position: absolute;
+  left: -50px;
+}
+
+.carousell .switchRight {
+  position: absolute;
+  right: -50px;
+}
+
+.carouselbox1 {
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.carouselbox1 img {
+  background-size: cover;
+  cursor: pointer;
+  margin: 0;
+  transition: 0.5s ease;
+  z-index: 2;
+}
+
+.carouselbox1 img:hover {
+  transform: scale(1.1);
+  z-index: 5;
+}
+.slider_container {
+  flex: 0 0 25%;
+  padding: 0.5rem;
+}
+.slider-img {
+  width: 100%;
+  height: 70%;
+}
