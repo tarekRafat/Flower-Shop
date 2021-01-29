@@ -6,7 +6,7 @@
 /* header  */
 .header-top {
   height: 5rem;
-  padding: 1rem;
+  padding: 0.5rem;
   align-items: center;
 }
 .navbar-right {
@@ -27,6 +27,9 @@
   border-bottom: 1px solid #454545;
   padding-bottom: 5px;
 }
+.stick {
+  padding-bottom: 1rem;
+}
 .stickey-header {
   transition: 1s all ease-in-out;
   position: fixed;
@@ -39,7 +42,7 @@
 }
 /* modal styles  */
 .total-price-container {
-  justify-content: center;
+  justify-content: space-around;
 }
 .flower-modal-desc {
   display: flex;
@@ -63,6 +66,10 @@
 }
 .up-down p {
   margin: 0;
+}
+.remove-item {
+  opacity: 0.5;
+  cursor: pointer;
 }
 .cart-modal-price,
 .cart-modal-header,
@@ -186,7 +193,11 @@
 .log h1 {
   font-family: "Times New Roman", Times, serif;
 }
-.log h1:hover {
+.log h1 a {
+  text-decoration: none;
+  color: #454545;
+}
+.log h1 a:hover {
   color: #ff3d2a;
   cursor: pointer;
 }
@@ -395,4 +406,34 @@
 .details {
   text-decoration: none;
   color: #454545;
+}
+@media only screen and (max-width: 991px) {
+  .bottlebrush-flowers {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .welcome p {
+    text-align: center;
+  }
+  .stickey-header {
+    padding-bottom: 3rem;
+  }
+  .top-header {
+    margin: 0 auto;
+    padding: 0;
+  }
+  .bergamot-flowers {
+    margin-top: 1rem;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .stickey-header {
+    padding-bottom: 3rem;
+  }
+  .top-header {
+    margin: 0 auto;
+    padding: 0;
+  }
 }
