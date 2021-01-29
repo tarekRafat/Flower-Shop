@@ -30,6 +30,10 @@
 .stick {
   padding-bottom: 1rem;
 }
+.testt {
+  height: 1rem;
+  width: 1rem;
+}
 .stickey-header {
   transition: 1s all ease-in-out;
   position: fixed;
@@ -375,7 +379,7 @@
 }
 
 .bag-icon {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #454545;
   width: 66%;
   padding: 0.5rem;

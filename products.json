@@ -5,6 +5,7 @@
       "fields": {
         "title": "Flowers Bouquet Pink",
         "price": 100.00,
+        "details":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.",
         "image": { "url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/5_e83a8771-fcbf-4180-aab3-b198e0828839_grande.jpg?v=1533545131" }
       }
     },
@@ -13,6 +14,7 @@
       "fields": {
         "title": "Evergreen Candytuft",
         "price": 50,
+        "details":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.",
         "image": {"url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/6_21dd31a0-0b8e-4f0b-a9f9-b497b4961887_grande.jpg?v=1533545135"}
       }
     },
@@ -21,6 +23,7 @@
       "fields": {
         "title": "Pearly Everlasting",
         "price": 100,
+        "details":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,",
         "image": {"url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/7_a55fa9d0-e913-4819-a018-d31d7e003af7_grande.jpg?v=1533545141" }
       }
     },
@@ -29,6 +32,7 @@
       "fields": {
         "title": "Polka Dot Plant",
         "price": 30,
+        "details":"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,",
         "image": {"url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/1_710403b2-3667-413e-bb0f-8f24edc3537a_grande.jpg?v=1533544879"  }
       }
     },
@@ -37,6 +41,7 @@
       "fields": {
         "title": "Pearly Everlasting",
         "price": 30,
+        "details":"",
         "image": {"url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/8_babe402b-b618-48ae-a2e9-91edf1969c48_grande.jpg?v=1533544857"  }
       }
     },
@@ -45,14 +50,16 @@
       "fields": {
         "title": "Flowers Bouquet Pink",
         "price": 150,
+        "details":"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
         "image": {"url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/3_5ed686d0-c62e-42fb-bc03-777601923eb7_grande.jpg?v=1533544611"  }
       }
     },
     {
       "sys": { "id": "7" },
       "fields": {
-        "title": "Affiliate Link Product",
-        "price": 80,
+        "title": "Glory Of The Snow",
+        "price": 150,
+        "details":"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
         "image": {"url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/2_9eeadf0b-b343-43b5-b0e6-b8e6733cb223_grande.jpg?v=1533544605"  }
       }
     },
@@ -61,6 +68,7 @@
       "fields": {
         "title": "Dutchman's Breeches",
         "price": 50,
+        "details":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution.",
         "image": {"url": "//cdn.shopify.com/s/files/1/0021/5570/8489/products/4_1bc55002-bd95-4b1c-a37b-2bd5b7637675_grande.jpg?v=1533545126"  }
       }
     }

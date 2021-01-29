@@ -65,8 +65,60 @@ $(document).ready(() => {
     displayProduts(products) {
       let results = "";
       products.forEach(product => {
-        results += `<div class="slider_container">
-        <img class="img-1 slider-img" src="${product.fields.image.url}" />
+        results += `<div class="slider_container"data-containerId ="${product.sys.id}">
+          
+
+          <!-- Button trigger modal -->
+<a  data-bs-toggle="modal" data-bs-target="#detailsModal">
+<img class="img-1 slider-img" src="${product.fields.image.url}" />
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+                      <div class="modal-header flower-modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                        <button type="button" class="btn-close  close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+   
+      <div class="modal-body">
+     
+      <div class="row">
+        <div class="col-lg-6 col-md-12 modal-details-img">
+          
+        </div>
+        <div class="col-lg-6 col-md-12 flower-details">
+          <h5 class="modal-details-title"></h5>
+          <span class="starts">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <span>1 review</span>
+          </span>
+          <h3 class="modal-details-price"></h3>
+          <span class="avilability">Availability: 3 left in stock</span>
+          <div>
+          <span class="flower-description">
+
+        </span>
+          </div>
+          <span>Size:</span>
+          <span>XL XS ML X L M</span>
+        </div>
+     
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
         <div class="carousel-img-des">
           <a class="details">
             ${product.fields.title}
@@ -92,7 +144,7 @@ $(document).ready(() => {
         let inCart = cart.find(item => item.sys.id === id);
         if (inCart) {
           button.innerText = "in Cart";
-          button.disabled = true;
+          // button.disabled = true;
         } else {
           button.addEventListener("click", e => {
             if (e.target.innerHTML === "In Cart") return;
@@ -128,7 +180,7 @@ $(document).ready(() => {
       div.innerHTML = `
       <div class="row">
       <div class="col-6">
-        <img src="${item.fields.image.url}" class="img-fluid" alt="${item.fields.title}">
+        <img src="${item.fields.image.url}" class="img-fluid" alt="${item.fields.title}"> 
       </div>
       <div class="col-6 flower-modal-desc">
       <div class="cart-modal-header">
@@ -216,6 +268,34 @@ $(document).ready(() => {
     getSigleBtn(id) {
       return buttonsDom.find(button => button.dataset.id === id);
     }
+    detailsPage() {
+      const imgs = document.querySelectorAll(".slider-img");
+      imgs.forEach(img => {
+        img.addEventListener("click", e => {
+          console.log(e.target.parentElement.parentElement.dataset.containerid);
+
+          // console.log(imgSource);
+          // window.location = "details.html";
+          // console.log((window.location.href = "details.html"));
+          let spacificProduct = Storage.getProduct(
+            e.target.parentElement.parentElement.dataset.containerid
+          );
+          console.log(spacificProduct);
+          let imgSource = spacificProduct.fields.image.url;
+          let imgTitle = spacificProduct.fields.title;
+          let imgPrice = spacificProduct.fields.price;
+          let imgDesc = spacificProduct.fields.details;
+          let dynamicValues = "";
+          let dynamicImg = `
+          <img src="${imgSource}" class="img-fluid"/> 
+    `;
+          $(".modal-details-img").html(dynamicImg);
+          $(".modal-details-title").html(`${imgTitle}`);
+          $(".modal-details-price").html(`$${imgPrice}`);
+          $(".flower-description").html(`${imgDesc}`);
+        });
+      });
+    }
   }
 
   const ui = new UI();
@@ -231,6 +311,7 @@ $(document).ready(() => {
     .then(() => {
       ui.getBagBtn();
       ui.cartLogic();
+      ui.detailsPage();
     });
 
   // Slider
